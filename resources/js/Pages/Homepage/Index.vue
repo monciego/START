@@ -31,13 +31,15 @@ defineProps({
             <BackgroundGradient />
         </div>
         <h1 class="text-center font-bold text-4xl py-6 text-indigo-600">
-            STARTMO
+            iSTARTMO
         </h1>
         <div class="h-[45vh]">
             <img src="/assets/home-image.svg" class="h-full w-full" alt="" />
         </div>
-        <p class="font-bold tracking-wider my-4 text-center text-xl">
-            START.THINK.AIM.TELL
+        <p
+            class="font-bold tracking-wider my-4 text-center text-base sm:text-xl"
+        >
+            START.THINK.AIM. REFINE. TELL
         </p>
         <div class="flex flex-col items-center justify-center gap-3">
             <Link

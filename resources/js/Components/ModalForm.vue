@@ -66,7 +66,7 @@ const form = useForm({
     see: "",
     think: "",
     aim: "",
-    review: "",
+    refine: "",
     tell: "",
 });
 
@@ -243,10 +243,10 @@ const submitForm = () => {
                     </div>
 
                     <ckeditor
-                        name="review"
-                        id="see"
+                        name="refine"
+                        id="refine"
                         :editor="editor"
-                        v-model="form.review"
+                        v-model="form.see"
                         :config="editorConfig"
                     ></ckeditor>
                     <div class="flex items-center justify-between mt-4">
