@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link } from "@inertiajs/vue3";
+import BackgroundGradient from "@/Components/BackgroundGradient.vue";
 
 defineProps({
     canLogin: {
@@ -23,6 +24,12 @@ defineProps({
     <Head title="Welcome" />
 
     <main>
+        <div
+            class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+            aria-hidden="true"
+        >
+            <BackgroundGradient />
+        </div>
         <h1 class="text-center font-bold text-4xl py-6 text-indigo-600">
             STARTMO
         </h1>
