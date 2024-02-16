@@ -85,11 +85,6 @@ const prevStep = () => {
 const goToStep = (step) => {
     currentStep.value = step;
 };
-
-const submitForm = () => {
-    // Handle form submission logic here
-    console.log("Form submitted:", formData.value);
-};
 </script>
 
 <template>
@@ -101,7 +96,13 @@ const submitForm = () => {
     </button>
 
     <Modal :show="confirmingOpeningModal" @close="closeModal">
-        <form class="p-6">
+        <form
+            @submit.prevent="
+                form.post(route('start.store')),
+                    { onSuccess: () => form.reset() }
+            "
+            class="p-6"
+        >
             <ol class="flex items-center w-full">
                 <li
                     class="flex w-full items-center text-white after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block after:border-gray-700"
@@ -246,7 +247,7 @@ const submitForm = () => {
                         name="refine"
                         id="refine"
                         :editor="editor"
-                        v-model="form.see"
+                        v-model="form.refine"
                         :config="editorConfig"
                     ></ckeditor>
                     <div class="flex items-center justify-between mt-4">
