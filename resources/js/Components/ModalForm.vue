@@ -239,7 +239,7 @@ const submitForm = () => {
                 </div>
                 <div v-show="currentStep === 4">
                     <div class="my-4">
-                        <h2>R</h2>
+                        <h2>Refine</h2>
                     </div>
 
                     <ckeditor
