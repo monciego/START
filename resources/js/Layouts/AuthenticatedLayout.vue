@@ -173,7 +173,7 @@ const showingNavigationDropdown = ref(false);
             </nav>
 
             <!-- Page Content -->
-            <main>
+            <main class="pb-24 sm:pb-0">
                 <slot />
             </main>
 
