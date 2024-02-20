@@ -38,6 +38,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    :href="route('dashboard')"
+                                    :active="route().current('dashboard')"
+                                >
+                                    Documents
+                                </NavLink>
                             </div>
                         </div>
 
@@ -136,17 +142,8 @@ const showingNavigationDropdown = ref(false);
                         block: showingNavigationDropdown,
                         hidden: !showingNavigationDropdown,
                     }"
-                    class="sm:hidden"
+                    class="sm:hidden fixed left-0 right-0 top-15 shadow-md bg-white z-[50]"
                 >
-                    <div class="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
-                    </div>
-
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="px-4">
@@ -183,7 +180,8 @@ const showingNavigationDropdown = ref(false);
                 class="fixed z-50 w-full h-16 bottom-0 left-0 right-0 bg-gray-950"
             >
                 <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
-                    <button
+                    <Link
+                        :href="route('dashboard')"
                         data-tooltip-target="tooltip-home"
                         type="button"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
@@ -200,7 +198,7 @@ const showingNavigationDropdown = ref(false);
                             />
                         </svg>
                         <span class="sr-only">Home</span>
-                    </button>
+                    </Link>
                     <div
                         id="tooltip-home"
                         role="tooltip"
@@ -274,7 +272,8 @@ const showingNavigationDropdown = ref(false);
                         Settings
                         <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
-                    <button
+                    <Link
+                        :href="route('profile.edit')"
                         data-tooltip-target="tooltip-profile"
                         type="button"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
@@ -291,7 +290,7 @@ const showingNavigationDropdown = ref(false);
                             />
                         </svg>
                         <span class="sr-only">Profile</span>
-                    </button>
+                    </Link>
                     <div
                         id="tooltip-profile"
                         role="tooltip"
