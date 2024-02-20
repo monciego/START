@@ -178,7 +178,7 @@ const showingNavigationDropdown = ref(false);
             </main>
 
             <div
-                class="fixed z-50 w-full h-16 bottom-0 left-0 right-0 bg-gray-950"
+                class="fixed block sm:hidden z-50 w-full h-16 bottom-0 left-0 right-0 bg-gray-950"
             >
                 <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
                     <MobileNavlink
