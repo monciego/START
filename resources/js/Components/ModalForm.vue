@@ -70,6 +70,17 @@ const form = useForm({
     tell: "",
 });
 
+const submit = () => {
+    console.log("submitted");
+    form.post(route("start.store"), {
+        // onError = dont close
+        onFinish: () => (confirmingOpeningModal.value = false),
+        onSuccess: () => {
+            form.reset(), (currentStep.value = 1);
+        },
+    });
+};
+
 const nextStep = () => {
     if (currentStep.value < 5) {
         currentStep.value++;
@@ -96,13 +107,7 @@ const goToStep = (step) => {
     </button>
 
     <Modal :show="confirmingOpeningModal" @close="closeModal">
-        <form
-            @submit.prevent="
-                form.post(route('start.store')),
-                    { onSuccess: () => form.reset() }
-            "
-            class="p-6"
-        >
+        <form @submit.prevent="submit" class="p-6">
             <ol class="flex items-center w-full">
                 <li
                     class="flex w-full items-center text-white after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block after:border-gray-700"
