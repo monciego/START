@@ -229,7 +229,10 @@ const showingNavigationDropdown = ref(false);
                         </svg>
                         <span class="sr-only">Directory</span>
                     </MobileNavlink>
-                    <div class="flex relative items-center justify-center">
+                    <div
+                        v-if="$page.props.role.user"
+                        class="flex relative items-center justify-center"
+                    >
                         <button
                             data-tooltip-target="tooltip-new"
                             type="button"
@@ -237,6 +240,19 @@ const showingNavigationDropdown = ref(false);
                         >
                             <ModalForm />
                         </button>
+                    </div>
+                    <div
+                        v-if="$page.props.role.superadministrator"
+                        class="flex relative items-center justify-center"
+                    >
+                        <div
+                            class="inline-flex items-center justify-center w-10 h-10 font-medium rounded-full"
+                        >
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/en/7/75/Pangasinan_State_University_logo.png"
+                                alt=""
+                            />
+                        </div>
                     </div>
                     <button
                         data-tooltip-target="tooltip-settings"
