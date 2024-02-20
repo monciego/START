@@ -5,7 +5,7 @@ const hour = today.getHours();
 
 <template>
     <div
-        class="text-white mx-2 sm:mx-4 relative bg-gradient-to-r from-indigo-500 to-blue-700 p-2 sm:p-6 rounded-sm overflow-hidden mb-8"
+        class="text-white mx-2 sm:mx-4 relative bg-gradient-to-r from-indigo-500 to-blue-700 p-4 sm:p-6 rounded-sm overflow-hidden mb-8"
     >
         <div
             class="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block"
