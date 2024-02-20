@@ -5,7 +5,7 @@ const hour = today.getHours();
 
 <template>
     <div
-        class="text-white relative bg-gradient-to-r from-indigo-500 to-blue-700 p-4 sm:p-6 rounded-sm overflow-hidden mb-8"
+        class="text-white mx-2 sm:mx-4 relative bg-gradient-to-r from-indigo-500 to-blue-700 p-2 sm:p-6 rounded-sm overflow-hidden mb-8"
     >
         <div
             class="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block"
@@ -93,14 +93,14 @@ const hour = today.getHours();
         </div>
 
         <div class="relative">
-            <h1 class="text-2xl md:text-3xl font-bold mb-1">
+            <h1 class="text-lg sm:text-xl md:text-3xl font-bold mb-1">
                 Good
                 <span v-if="hour < 12">morning,</span>
                 <span v-else-if="hour < 18">afternoon,</span>
                 <span v-else>evening,</span>
-                {{ $page.props.auth.user.name }} 💡
+                {{ $page.props.auth.user.name }}
             </h1>
-            <p>See. Think. Aim. Refine. Tell.</p>
+            <p class="text-sm sm:text-base">See. Think. Aim. Refine. Tell.</p>
         </div>
     </div>
 </template>
