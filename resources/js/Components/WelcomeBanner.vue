@@ -93,7 +93,7 @@ const hour = today.getHours();
         </div>
 
         <div class="relative">
-            <h1 class="text-lg sm:text-xl md:text-3xl font-bold mb-1">
+            <h1 class="text-xl md:text-3xl font-bold mb-1">
                 Good
                 <span v-if="hour < 12">morning,</span>
                 <span v-else-if="hour < 18">afternoon,</span>
