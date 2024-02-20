@@ -194,7 +194,7 @@ const showingNavigationDropdown = ref(false);
                                     ? 'text-blue-600'
                                     : 'text-gray-400'
                             "
-                            class="w-5 h-5 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            class="w-5 h-5 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -221,7 +221,7 @@ const showingNavigationDropdown = ref(false);
                                     ? 'text-blue-600'
                                     : 'text-gray-400'
                             "
-                            class="w-5 h-5 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            class="w-6 h-6 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                         >
                             <path
                                 d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z"
@@ -287,7 +287,7 @@ const showingNavigationDropdown = ref(false);
                                     ? 'text-blue-600'
                                     : 'text-gray-400'
                             "
-                            class="w-5 h-5 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            class="w-6 h-6 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
