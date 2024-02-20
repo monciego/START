@@ -2,6 +2,7 @@
 import Modal from "@/Components/Modal.vue";
 import SuccessButton from "@/Components/SuccessButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
+import { PlusIcon } from "@heroicons/vue/24/solid";
 import { ref, onMounted } from "vue";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useForm } from "@inertiajs/vue3";
@@ -100,9 +101,9 @@ const goToStep = (step) => {
 <template>
     <button
         @click="confirmOpenModal"
-        class="h-10 w-10 bg-indigo-700 text-white rounded-full"
+        class="h-10 w-10 flex items-center justify-center bg-indigo-700 text-white rounded-full"
     >
-        +
+        <PlusIcon class="h-5 w-5" />
     </button>
 
     <Modal :show="confirmingOpeningModal" @close="closeModal">
