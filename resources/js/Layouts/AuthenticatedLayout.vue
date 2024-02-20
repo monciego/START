@@ -217,7 +217,7 @@ const showingNavigationDropdown = ref(false);
                             viewBox="0 0 24 24"
                             fill="currentColor"
                             :class="
-                                route().current('dashboard')
+                                route().current('directory.*')
                                     ? 'text-blue-600'
                                     : 'text-gray-400'
                             "
