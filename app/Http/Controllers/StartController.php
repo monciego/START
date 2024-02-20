@@ -18,6 +18,7 @@ class StartController extends Controller
         ]);
 
         $request->user()->starts()->create($validated);
-        return redirect(route('dashboard'));
+
+        return redirect(route('dashboard'))->with('success', 'Submitted Successfully!');
     }
 }
