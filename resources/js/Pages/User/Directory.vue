@@ -53,6 +53,15 @@ dayjs.extend(LocalizedFormat);
                     </p>
                 </li>
             </ul>
+            <div
+                v-if="documents.length === 0"
+                class="flex flex-col gap-8 items-center justify-center"
+            >
+                <img class="h-64 w-full" src="/assets/empty-directory.svg" />
+                <h2 class="text-center sm:text-xl uppercase font-bold">
+                    Nothing can be found here
+                </h2>
+            </div>
         </div>
 
         <div v-if="$page.props.role.user">
@@ -95,6 +104,16 @@ dayjs.extend(LocalizedFormat);
                     </p>
                 </li>
             </ul>
+
+            <div
+                v-if="yourDocuments.length === 0"
+                class="flex flex-col gap-8 items-center justify-center"
+            >
+                <img class="h-64 w-full" src="/assets/empty-directory.svg" />
+                <h2 class="text-center sm:text-xl uppercase font-bold">
+                    Nothing can be found here
+                </h2>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
