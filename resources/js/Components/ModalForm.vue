@@ -73,7 +73,6 @@ const form = useForm({
 const submit = () => {
     console.log("submitted");
     form.post(route("start.store"), {
-        // onError = dont close
         onFinish: () => (confirmingOpeningModal.value = false),
         onSuccess: () => {
             form.reset(), (currentStep.value = 1);
@@ -281,7 +280,18 @@ const goToStep = (step) => {
                         <SecondaryButton type="button" @click="prevStep">
                             Prev</SecondaryButton
                         >
-                        <SuccessButton type="submit" @click="nextStep">
+                        <SuccessButton
+                            type="submit"
+                            :disabled="
+                                form.processing ||
+                                !form.see ||
+                                !form.think ||
+                                !form.aim ||
+                                !form.refine ||
+                                !form.tell
+                            "
+                            @click="nextStep"
+                        >
                             Submit
                         </SuccessButton>
                     </div>
