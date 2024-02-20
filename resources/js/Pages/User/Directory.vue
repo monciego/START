@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 
 defineProps(["documents", "yourDocuments"]);
 
@@ -18,8 +18,9 @@ dayjs.extend(LocalizedFormat);
                 role="list"
                 class="grid m-4 mt-10 grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
             >
-                <li
+                <Link
                     v-for="document in documents"
+                    :href="route('directory.show', { directory: document.id })"
                     :key="document.id"
                     class="relative"
                 >
@@ -51,7 +52,7 @@ dayjs.extend(LocalizedFormat);
                     >
                         {{ dayjs(document.created_at).format("LLL") }}
                     </p>
-                </li>
+                </Link>
             </ul>
             <div
                 v-if="documents.length === 0"
@@ -69,7 +70,8 @@ dayjs.extend(LocalizedFormat);
                 role="list"
                 class="grid m-4 mt-10 grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
             >
-                <li
+                <Link
+                    :href="route('directory.show', { directory: document.id })"
                     v-for="document in yourDocuments"
                     :key="document.id"
                     class="relative"
@@ -102,7 +104,7 @@ dayjs.extend(LocalizedFormat);
                     >
                         {{ dayjs(document.created_at).format("LLL") }}
                     </p>
-                </li>
+                </Link>
             </ul>
 
             <div
