@@ -41,10 +41,10 @@ const showingNavigationDropdown = ref(false);
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
+                                    :href="route('directory.index')"
+                                    :active="route().current('directory.*')"
                                 >
-                                    Documents
+                                    Directory
                                 </NavLink>
                             </div>
                         </div>
@@ -206,40 +206,29 @@ const showingNavigationDropdown = ref(false);
                         </svg>
                         <span class="sr-only">Home</span>
                     </MobileNavlink>
-                    <div
-                        id="tooltip-home"
-                        role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-                    >
-                        Home
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
-                    <button
-                        data-tooltip-target="tooltip-wallet"
-                        type="button"
+
+                    <MobileNavlink
+                        :href="route('directory.index')"
+                        :active="route().current('directory.*')"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
-                            class="w-6 h-6 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            :class="
+                                route().current('dashboard')
+                                    ? 'text-blue-600'
+                                    : 'text-gray-400'
+                            "
+                            class="w-5 h-5 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                         >
                             <path
                                 d="M19.5 21a3 3 0 0 0 3-3v-4.5a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3V18a3 3 0 0 0 3 3h15ZM1.5 10.146V6a3 3 0 0 1 3-3h5.379a2.25 2.25 0 0 1 1.59.659l2.122 2.121c.14.141.331.22.53.22H19.5a3 3 0 0 1 3 3v1.146A4.483 4.483 0 0 0 19.5 9h-15a4.483 4.483 0 0 0-3 1.146Z"
                             />
                         </svg>
-
                         <span class="sr-only">Directory</span>
-                    </button>
-                    <div
-                        id="tooltip-wallet"
-                        role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-                    >
-                        Wallet
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    </MobileNavlink>
                     <div class="flex relative items-center justify-center">
                         <button
                             data-tooltip-target="tooltip-new"
