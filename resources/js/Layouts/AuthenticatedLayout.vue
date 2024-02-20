@@ -3,6 +3,7 @@ import { ref } from "vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
+import MobileNavlink from "@/Components/MobileNavlink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/vue3";
@@ -180,14 +181,18 @@ const showingNavigationDropdown = ref(false);
                 class="fixed z-50 w-full h-16 bottom-0 left-0 right-0 bg-gray-950"
             >
                 <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
-                    <Link
+                    <MobileNavlink
                         :href="route('dashboard')"
-                        data-tooltip-target="tooltip-home"
-                        type="button"
+                        :active="route().current('dashboard')"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
                     >
                         <svg
-                            class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            :class="
+                                route().current('dashboard')
+                                    ? 'text-blue-600'
+                                    : 'text-gray-400'
+                            "
+                            class="w-5 h-5 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -198,7 +203,7 @@ const showingNavigationDropdown = ref(false);
                             />
                         </svg>
                         <span class="sr-only">Home</span>
-                    </Link>
+                    </MobileNavlink>
                     <div
                         id="tooltip-home"
                         role="tooltip"
@@ -264,22 +269,18 @@ const showingNavigationDropdown = ref(false);
                         </svg>
                         <span class="sr-only">Settings</span>
                     </button>
-                    <div
-                        id="tooltip-settings"
-                        role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-                    >
-                        Settings
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
-                    <Link
+                    <MobileNavlink
                         :href="route('profile.edit')"
-                        data-tooltip-target="tooltip-profile"
-                        type="button"
+                        :active="route().current('profile.edit')"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
                     >
                         <svg
-                            class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            :class="
+                                route().current('profile.edit')
+                                    ? 'text-blue-600'
+                                    : 'text-gray-400'
+                            "
+                            class="w-5 h-5 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor"
@@ -290,15 +291,7 @@ const showingNavigationDropdown = ref(false);
                             />
                         </svg>
                         <span class="sr-only">Profile</span>
-                    </Link>
-                    <div
-                        id="tooltip-profile"
-                        role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-                    >
-                        Profile
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
+                    </MobileNavlink>
                 </div>
             </div>
         </div>
