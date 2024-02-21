@@ -101,9 +101,9 @@ const goToStep = (step) => {
 <template>
     <button
         @click="confirmOpenModal"
-        class="h-10 w-10 flex items-center justify-center bg-indigo-700 text-white rounded-full"
+        class="h-10 w-10 sm:h-16 sm:w-16 flex items-center justify-center bg-indigo-700 text-white rounded-full"
     >
-        <PlusIcon class="h-5 w-5" />
+        <PlusIcon class="h-5 w-5 sm:h-8 sm:w-8" />
     </button>
 
     <Modal :show="confirmingOpeningModal" @close="closeModal">
