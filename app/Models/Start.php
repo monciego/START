@@ -10,6 +10,7 @@ class Start extends Model
     use HasFactory;
 
     protected $fillable = ['see', 'think', 'aim', 'refine', 'tell'];
+    protected $with= ['user'];
 
     public function user() {
         return $this->belongsTo(User::class);
