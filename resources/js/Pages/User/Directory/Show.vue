@@ -8,19 +8,67 @@ import {
     AcademicCapIcon,
     ArrowLeftIcon,
 } from "@heroicons/vue/24/solid";
-
-defineProps(["directory"]);
-
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import SuccessButton from "@/Components/SuccessButton.vue";
+import { useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
 
+const editor = ref(ClassicEditor);
+
+const editorConfig = {
+    mediaEmbed: {
+        removeProviders: [
+            "dailymotion",
+            "spotify",
+            "youtube",
+            "vimeo",
+            "instagram",
+            "twitter",
+            "googleMaps",
+            "flickr",
+            "facebook",
+        ],
+    },
+    toolbar: [
+        "undo",
+        "redo",
+        "bold",
+        "italic",
+        "|",
+        "bulletedList",
+        "numberedList",
+        "|",
+        "heading",
+        "|",
+        "outdent",
+        "indent",
+        "|",
+        "link",
+        "|",
+        "blockQuote",
+    ],
+};
+
+const props = defineProps(["directory", "mentoringOutlining"]);
 dayjs.extend(LocalizedFormat);
+
+const form = useForm({
+    start_id: props.directory.id,
+    mentoring: props.mentoringOutlining
+        ? props.mentoringOutlining.mentoring
+        : "",
+    outlining: props.mentoringOutlining
+        ? props.mentoringOutlining.outlining
+        : "",
+});
 </script>
 
 <template>
     <Head title="Directory" />
     <AuthenticatedLayout>
-        <div class="mt-10 mx-6 sm:mx-10">
+        <div class="my-10 mx-6 sm:mx-10">
             <div class="lg:flex mb-10 lg:items-center lg:justify-between">
                 <div class="min-w-0 flex-1">
                     <h2
@@ -85,78 +133,139 @@ dayjs.extend(LocalizedFormat);
                 </div>
             </div>
 
-            <ol class="relative border-s border-gray-700">
-                <li class="mb-10 ms-10">
-                    <span
-                        class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+            <form
+                @submit.prevent="form.post(route('mentoring-outlining.store'))"
+            >
+                <ol class="relative border-s border-gray-700">
+                    <li class="mb-10 ms-10">
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            S
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            SEE
+                        </h3>
+                        <div
+                            class="prose text-base font-normal text-gray-700"
+                            v-html="directory.see"
+                        ></div>
+                    </li>
+                    <li class="mb-10 ms-10">
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            T
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            THINK
+                        </h3>
+                        <div
+                            class="prose text-base font-normal text-gray-700"
+                            v-html="directory.think"
+                        ></div>
+                    </li>
+                    <li class="mb-10 ms-10">
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            A
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            AIM
+                        </h3>
+                        <div
+                            class="prose text-base font-normal text-gray-700"
+                            v-html="directory.aim"
+                        ></div>
+                    </li>
+                    <li class="mb-10 ms-10">
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            R
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            REFINE
+                        </h3>
+                        <div
+                            class="prose text-base font-normal text-gray-700"
+                            v-html="directory.refine"
+                        ></div>
+                    </li>
+                    <li class="mb-10 ms-10">
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            T
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            TELL
+                        </h3>
+                        <div
+                            class="prose text-base font-normal text-gray-700"
+                            v-html="directory.tell"
+                        ></div>
+                    </li>
+                    <li
+                        class="mb-10 ms-10"
+                        v-if="$page.props.role.superadministrator"
                     >
-                        S
-                    </span>
-                    <h3 class="mb-2 text-lg font-semibold text-gray-900">
-                        SEE
-                    </h3>
-                    <div
-                        class="prose text-base font-normal text-gray-700"
-                        v-html="directory.see"
-                    ></div>
-                </li>
-                <li class="mb-10 ms-10">
-                    <span
-                        class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            M
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            MENTORING
+                        </h3>
+                        <div>
+                            <ckeditor
+                                name="mentoring"
+                                id="mentoring"
+                                :editor="editor"
+                                v-model="form.mentoring"
+                                :config="editorConfig"
+                            ></ckeditor>
+                        </div>
+                    </li>
+                    <li
+                        class="ms-10"
+                        v-if="$page.props.role.superadministrator"
                     >
-                        T
-                    </span>
-                    <h3 class="mb-2 text-lg font-semibold text-gray-900">
-                        THINK
-                    </h3>
-                    <div
-                        class="prose text-base font-normal text-gray-700"
-                        v-html="directory.think"
-                    ></div>
-                </li>
-                <li class="mb-10 ms-10">
-                    <span
-                        class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            O
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            OUTLINING
+                        </h3>
+                        <div>
+                            <ckeditor
+                                name="outlining"
+                                id="outlining"
+                                :editor="editor"
+                                v-model="form.outlining"
+                                :config="editorConfig"
+                            ></ckeditor>
+                        </div>
+                    </li>
+                    <SuccessButton
+                        v-if="$page.props.role.superadministrator"
+                        class="ms-10 mt-6"
+                        type="submit"
+                        :disabled="
+                            form.processing ||
+                            !form.mentoring ||
+                            !form.outlining
+                        "
                     >
-                        A
-                    </span>
-                    <h3 class="mb-2 text-lg font-semibold text-gray-900">
-                        AIM
-                    </h3>
-                    <div
-                        class="prose text-base font-normal text-gray-700"
-                        v-html="directory.aim"
-                    ></div>
-                </li>
-                <li class="mb-10 ms-10">
-                    <span
-                        class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
-                    >
-                        R
-                    </span>
-                    <h3 class="mb-2 text-lg font-semibold text-gray-900">
-                        REFINE
-                    </h3>
-                    <div
-                        class="prose text-base font-normal text-gray-700"
-                        v-html="directory.refine"
-                    ></div>
-                </li>
-                <li class="mb-10 ms-10">
-                    <span
-                        class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
-                    >
-                        T
-                    </span>
-                    <h3 class="mb-2 text-lg font-semibold text-gray-900">
-                        TELL
-                    </h3>
-                    <div
-                        class="prose text-base font-normal text-gray-700"
-                        v-html="directory.tell"
-                    ></div>
-                </li>
-            </ol>
+                        <span v-if="mentoringOutlining"> Update </span>
+                        <span v-else> Submit </span>
+                    </SuccessButton>
+                </ol>
+            </form>
         </div>
     </AuthenticatedLayout>
 </template>

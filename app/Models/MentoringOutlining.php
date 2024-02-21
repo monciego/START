@@ -11,6 +11,8 @@ class MentoringOutlining extends Model
 
     protected $fillable = [
         "mentoring",
+        "start_id",
+        "user_id",
         "outlining"
     ];
 }

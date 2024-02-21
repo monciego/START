@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MentoringOutlining;
 use App\Models\Start;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,8 +25,11 @@ class DirectoryController extends Controller
             abort(403);
         }
 
+        $mentoringOutlining = MentoringOutlining::where('start_id', $directory->id)->first();
+
         return Inertia::render("User/Directory/Show", [
-            'directory' => $directory
+            'directory' => $directory,
+            'mentoringOutlining' => $mentoringOutlining
         ]);
     }
 }
