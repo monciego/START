@@ -209,6 +209,48 @@ const form = useForm({
                     </li>
                     <li
                         class="mb-10 ms-10"
+                        v-if="
+                            $page.props.role.user &&
+                            mentoringOutlining &&
+                            mentoringOutlining.mentoring
+                        "
+                    >
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            M
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            MENTORING
+                        </h3>
+                        <div
+                            class="prose text-base font-normal bg-slate-900 text-white rounded p-4"
+                            v-html="mentoringOutlining.mentoring"
+                        ></div>
+                    </li>
+                    <li
+                        class="mb-10 ms-10"
+                        v-if="
+                            $page.props.role.user &&
+                            mentoringOutlining &&
+                            mentoringOutlining.outlining
+                        "
+                    >
+                        <span
+                            class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-yellow-500 bg-indigo-600 text-white"
+                        >
+                            O
+                        </span>
+                        <h3 class="mb-2 text-lg font-semibold text-gray-900">
+                            OUTLINING
+                        </h3>
+                        <div
+                            class="prose text-base font-normal bg-slate-900 text-white rounded p-4"
+                            v-html="mentoringOutlining.outlining"
+                        ></div>
+                    </li>
+                    <li
+                        class="mb-10 ms-10"
                         v-if="$page.props.role.superadministrator"
                     >
                         <span
