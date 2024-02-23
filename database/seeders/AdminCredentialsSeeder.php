@@ -15,6 +15,9 @@ class AdminCredentialsSeeder extends Seeder
     {
         $administrator = \App\Models\User::factory()->create([
             "name" => "Administrator",
+            "strand" => "",
+            "birthdate" => "",
+            "gender" => "",
             "email" => "startadministrator@psu.edu.ph",
             "password" => Hash::make('startadministrator@psu.edu.ph'),
         ]);
