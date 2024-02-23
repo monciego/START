@@ -9,7 +9,7 @@ class Start extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['see', 'think', 'aim', 'refine', 'tell'];
+    protected $fillable = ['see', 'think', 'aim', 'refine', 'tell', 'identifier_id'];
     protected $with= ['user'];
 
     public function user() {

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('aim');
             $table->longText('refine');
             $table->longText('tell');
+            $table->string('identifier_id');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

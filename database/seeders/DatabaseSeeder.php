@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+use Illuminate\Support\Facades\Hash;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,6 +16,17 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
         $this->call(AdminCredentialsSeeder::class);
         // \App\Models\User::factory(10)->create();
+
+        $user = \App\Models\User::factory()->create([
+            "name" => "Jericho Bantiquete",
+            "strand" => "STEM",
+            "birthdate" => "2000-01-10",
+            "gender" => "Male",
+            "email" => "jerichobantiquete@gmail.com",
+            "password" => Hash::make('$Password1234'),
+        ]);
+
+        $user->addRole("user");
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

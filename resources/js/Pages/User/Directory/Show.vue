@@ -7,6 +7,7 @@ import {
     BuildingLibraryIcon,
     AcademicCapIcon,
     ArrowLeftIcon,
+    ClipboardDocumentListIcon,
 } from "@heroicons/vue/24/solid";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import SuccessButton from "@/Components/SuccessButton.vue";
@@ -76,7 +77,14 @@ const form = useForm({
                     >
                         {{ directory.user.name }}
                     </h2>
-
+                    <div
+                        class="mt-2 flex font-medium items-center text-sm text-gray-700"
+                    >
+                        <ClipboardDocumentListIcon
+                            class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
+                        />
+                        {{ directory.identifier_id }}
+                    </div>
                     <div class="mt-2 flex items-center text-sm text-gray-700">
                         <CalendarIcon
                             class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
@@ -114,7 +122,7 @@ const form = useForm({
                             <AcademicCapIcon
                                 class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                             />
-                            Bachelor of Science in Information Technology
+                            {{ directory.user.strand }}
                         </div>
                     </div>
                 </div>

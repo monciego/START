@@ -45,7 +45,8 @@ dayjs.extend(LocalizedFormat);
                     <p
                         class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none"
                     >
-                        START &CenterDot; {{ document.user.name }}
+                        {{ document.identifier_id }} &CenterDot;
+                        {{ document.user.name }}
                     </p>
                     <p
                         class="block text-sm font-medium text-gray-500 pointer-events-none"
