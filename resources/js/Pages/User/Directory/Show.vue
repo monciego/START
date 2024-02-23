@@ -114,7 +114,7 @@ const form = useForm({
                             <BuildingLibraryIcon
                                 class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                             />
-                            Alaminos City Campus
+                            {{ directory.user.school }}
                         </div>
                         <div
                             class="mt-2 flex items-center text-sm text-gray-500"

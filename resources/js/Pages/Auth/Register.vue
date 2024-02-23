@@ -11,6 +11,7 @@ const form = useForm({
     email: "",
     password: "",
     gender: "",
+    school: "",
     strand: "",
     birthdate: "",
     password_confirmation: "",
@@ -72,6 +73,21 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.strand" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="school" value="School" />
+
+                <TextInput
+                    id="school"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.school"
+                    required
+                    autocomplete="school"
+                />
+
+                <InputError class="mt-2" :message="form.errors.school" />
             </div>
 
             <div class="mt-4">

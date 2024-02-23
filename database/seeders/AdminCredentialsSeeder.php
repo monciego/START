@@ -18,6 +18,7 @@ class AdminCredentialsSeeder extends Seeder
             "strand" => "",
             "birthdate" => "",
             "gender" => "",
+            "school" => "Pangasinan State University",
             "email" => "startadministrator@psu.edu.ph",
             "password" => Hash::make('startadministrator@psu.edu.ph'),
         ]);
