@@ -5,6 +5,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DirectoryController;
 use App\Http\Controllers\MentoringOutliningController;
 use App\Http\Controllers\StartController;
+use App\Http\Controllers\TellReplyController;
+use App\Models\TellReply;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +36,7 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::resource('/start', StartController::class);
     Route::resource('/directory',DirectoryController::class)->only('index', 'show');
     Route::resource('/mentoring-outlining',MentoringOutliningController::class)->only('store', 'update');
+    Route::resource('/reply', TellReplyController::class)->only('store', 'update');
 });
 
 Route::middleware('auth')->group(function () {

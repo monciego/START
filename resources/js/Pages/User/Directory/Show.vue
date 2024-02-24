@@ -52,7 +52,7 @@ const editorConfig = {
     ],
 };
 
-const props = defineProps(["directory", "mentoringOutlining"]);
+const props = defineProps(["directory", "mentoringOutlining", "replies"]);
 dayjs.extend(LocalizedFormat);
 
 const form = useForm({
@@ -63,6 +63,11 @@ const form = useForm({
     outlining: props.mentoringOutlining
         ? props.mentoringOutlining.outlining
         : "",
+});
+
+const formReply = useForm({
+    start_id: props.directory.id,
+    body: "",
 });
 </script>
 
@@ -155,7 +160,7 @@ const form = useForm({
                             SEE
                         </h3>
                         <div
-                            class="prose text-base font-normal text-gray-700"
+                            class="prose-xl text-base font-normal text-gray-700"
                             v-html="directory.see"
                         ></div>
                     </li>
@@ -169,7 +174,7 @@ const form = useForm({
                             THINK
                         </h3>
                         <div
-                            class="prose text-base font-normal text-gray-700"
+                            class="prose-xl text-base font-normal text-gray-700"
                             v-html="directory.think"
                         ></div>
                     </li>
@@ -183,7 +188,7 @@ const form = useForm({
                             AIM
                         </h3>
                         <div
-                            class="prose text-base font-normal text-gray-700"
+                            class="prose-xl text-base font-normal text-gray-700"
                             v-html="directory.aim"
                         ></div>
                     </li>
@@ -197,7 +202,7 @@ const form = useForm({
                             REFINE
                         </h3>
                         <div
-                            class="prose text-base font-normal text-gray-700"
+                            class="prose-xl text-base font-normal text-gray-700"
                             v-html="directory.refine"
                         ></div>
                     </li>
@@ -211,9 +216,106 @@ const form = useForm({
                             TELL
                         </h3>
                         <div
-                            class="prose text-base font-normal text-gray-700"
+                            class="prose-xl text-base font-normal text-gray-700"
                             v-html="directory.tell"
                         ></div>
+                        <ol
+                            v-if="
+                                $page.props.role.superadministrator ||
+                                replies.length > 0
+                            "
+                            class="relative mt-6 border-s border-gray-700"
+                        >
+                            <li
+                                v-for="reply in replies"
+                                :key="reply.id"
+                                class="mb-10 ms-6"
+                            >
+                                <span
+                                    class="absolute flex items-center justify-center w-6 h-6 rounded-full -start-3 ring-8 ring-gray-900 bg-slate-900"
+                                >
+                                    <img
+                                        class="rounded-full shadow-lg"
+                                        src="https://upload.wikimedia.org/wikipedia/en/7/75/Pangasinan_State_University_logo.png"
+                                        alt=""
+                                    />
+                                </span>
+                                <a href="" class="pb-4 font-medium">{{
+                                    reply.user.name
+                                }}</a>
+                                <div
+                                    class="items-center justify-between p-4 border rounded-lg shadow-sm sm:flex bg-slate-900 border-gray-600"
+                                >
+                                    <time
+                                        class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0"
+                                        >just now</time
+                                    >
+                                    <div
+                                        class="prose-xl text-sm font-normal text-gray-300"
+                                        v-html="reply.body"
+                                    ></div>
+                                </div>
+                            </li>
+                            <li class="mb-10 ms-6">
+                                <span
+                                    class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900"
+                                >
+                                    <img
+                                        class="rounded-full shadow-lg"
+                                        src="https://upload.wikimedia.org/wikipedia/en/7/75/Pangasinan_State_University_logo.png"
+                                        alt=""
+                                    />
+                                </span>
+                                <div
+                                    class="p-4 border rounded-lg shadow-sm bg-slate-900 border-gray-600"
+                                >
+                                    <div
+                                        class="items-center justify-between mb-3 sm:flex"
+                                    >
+                                        <div
+                                            class="text-sm font-normal text-gray-500 lex dark:text-gray-300"
+                                        >
+                                            Write your coment here
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="p-3 border rounded-lg bg-slate-100 border-gray-500"
+                                    >
+                                        <form
+                                            @submit.prevent="
+                                                formReply.post(
+                                                    route('reply.store'),
+                                                    {
+                                                        onSuccess: () =>
+                                                            formReply.reset(),
+                                                    }
+                                                )
+                                            "
+                                        >
+                                            <div>
+                                                <ckeditor
+                                                    name="body"
+                                                    id="body"
+                                                    :editor="editor"
+                                                    v-model="formReply.body"
+                                                    :config="editorConfig"
+                                                ></ckeditor>
+                                            </div>
+                                            <SuccessButton
+                                                class="mt-4"
+                                                type="submit"
+                                                :disabled="
+                                                    formReply.processing ||
+                                                    !formReply.body
+                                                "
+                                            >
+                                                Submit
+                                            </SuccessButton>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
                     </li>
                     <li
                         class="mb-10 ms-10"

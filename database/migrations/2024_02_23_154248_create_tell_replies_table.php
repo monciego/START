@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mentoring_outlinings', function (Blueprint $table) {
+        Schema::create('tell_replies', function (Blueprint $table) {
             $table->id();
-            $table->longText('mentoring');
-            $table->longText('outlining');
-            $table->foreignId('start_id')->constrained('starts')->cascadeOnDelete();
+            $table->longText('body');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('start_id')->constrained('starts')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mentoring_outlinings');
+        Schema::dropIfExists('tell_replies');
     }
 };

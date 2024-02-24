@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MentoringOutlining;
 use App\Models\Start;
+use App\Models\TellReply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -26,10 +27,12 @@ class DirectoryController extends Controller
         }
 
         $mentoringOutlining = MentoringOutlining::where('start_id', $directory->id)->first();
+        $replies = TellReply::where('start_id', $directory->id)->get();
 
         return Inertia::render("User/Directory/Show", [
             'directory' => $directory,
-            'mentoringOutlining' => $mentoringOutlining
+            'mentoringOutlining' => $mentoringOutlining,
+            'replies' => $replies
         ]);
     }
 }

@@ -49,8 +49,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function starts(): HasMany
-    {
+    public function starts(): HasMany {
         return $this->hasMany(Start::class);
+    }
+
+    public function tellReplies(): HasMany {
+        return $this->hasMany(TellReply::class);
     }
 }
