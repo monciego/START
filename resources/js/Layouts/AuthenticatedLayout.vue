@@ -79,9 +79,19 @@ const showingNavigationDropdown = ref(false);
 
                                     <template #content>
                                         <DropdownLink
-                                            :href="route('profile.edit')"
+                                            :href="
+                                                route('profile.index', {
+                                                    user: $page.props.auth.user
+                                                        .id,
+                                                })
+                                            "
                                         >
                                             Profile
+                                        </DropdownLink>
+                                        <DropdownLink
+                                            :href="route('profile.edit')"
+                                        >
+                                            Settings
                                         </DropdownLink>
                                         <DropdownLink
                                             :href="route('logout')"
@@ -254,13 +264,18 @@ const showingNavigationDropdown = ref(false);
                             />
                         </div>
                     </div>
-                    <button
-                        data-tooltip-target="tooltip-settings"
-                        type="button"
+                    <MobileNavlink
+                        :href="route('profile.edit')"
+                        :active="route().current('profile.edit')"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
                     >
                         <svg
-                            class="w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                            :class="
+                                route().current('profile.edit')
+                                    ? 'text-blue-600'
+                                    : 'text-gray-400'
+                            "
+                            class="w-6 h-6 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -275,15 +290,19 @@ const showingNavigationDropdown = ref(false);
                             />
                         </svg>
                         <span class="sr-only">Settings</span>
-                    </button>
+                    </MobileNavlink>
                     <MobileNavlink
-                        :href="route('profile.edit')"
-                        :active="route().current('profile.edit')"
+                        :href="
+                            route('profile.index', {
+                                user: $page.props.auth.user.id,
+                            })
+                        "
+                        :active="route().current('profile.index')"
                         class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
                     >
                         <svg
                             :class="
-                                route().current('profile.edit')
+                                route().current('profile.index')
                                     ? 'text-blue-600'
                                     : 'text-gray-400'
                             "

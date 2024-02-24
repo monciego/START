@@ -240,9 +240,17 @@ const formReply = useForm({
                                         alt=""
                                     />
                                 </span>
-                                <a href="" class="pb-4 font-medium">{{
-                                    reply.user.name
-                                }}</a>
+                                <Link
+                                    :href="
+                                        route('profile.index', {
+                                            user: reply.user.id,
+                                        })
+                                    "
+                                    class="pb-4 font-medium text-indigo-700"
+                                >
+                                    {{ reply.user.name }}
+                                </Link>
+
                                 <div
                                     class="items-center justify-between p-4 border rounded-lg shadow-sm sm:flex bg-slate-900 border-gray-600"
                                 >
