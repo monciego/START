@@ -241,7 +241,7 @@ const showingNavigationDropdown = ref(false);
                     </MobileNavlink>
                     <div
                         v-if="$page.props.role.user"
-                        class="flex relative items-center justify-center sm:visible sm:fixed sm:bottom-10 sm:right-6"
+                        class="flex z-[1000] relative items-center justify-center sm:visible sm:fixed sm:bottom-10 sm:right-6"
                     >
                         <button
                             data-tooltip-target="tooltip-new"
