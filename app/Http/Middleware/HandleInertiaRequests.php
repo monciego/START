@@ -44,6 +44,9 @@ class HandleInertiaRequests extends Middleware
                 'superadministrator' => Auth::check() ? $user->hasRole('superadministrator') : false,
                 'user' => Auth::check() ? $user->hasRole('user')  : false,
             ],
+            'notification' => [
+                'adminNotification' => auth()->user()->unreadNotifications ?? null
+            ]
         ];
     }
 }

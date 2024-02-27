@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Notifications\NewStartNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class StartController extends Controller
 {
@@ -28,6 +31,8 @@ class StartController extends Controller
             'identifier_id' => $identifierId,
         ]);
 
+        $admin = User::where('id', 1)->get();
+        Notification::send($admin, new NewStartNotification($request->user()));
         return redirect(route('dashboard'))->with('success', 'Submitted Successfully!');
     }
 }
