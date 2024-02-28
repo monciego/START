@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'istartmo',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'ISTARTMO'),
+        'short_name' => 'ISTARTMO',
         'start_url' => '/login',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
