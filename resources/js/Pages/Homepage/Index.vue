@@ -37,9 +37,9 @@ defineProps({
             <img src="/assets/home-image.svg" class="h-full w-full" alt="" />
         </div>
         <p
-            class="font-bold tracking-wider my-4 text-center text-base sm:text-xl"
+            class="font-bold tracking-wider my-4 text-center text-base sm:text-xl px-4"
         >
-            START.THINK.AIM. REFINE. TELL
+            ISEE. THINK . AIM. REFINE. TELL. MENTOR. OUTLINE.
         </p>
         <div class="flex flex-col items-center justify-center gap-3">
             <Link
