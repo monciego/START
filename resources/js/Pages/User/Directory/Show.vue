@@ -15,6 +15,7 @@ import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 const editor = ref(ClassicEditor);
 
@@ -54,6 +55,7 @@ const editorConfig = {
 
 const props = defineProps(["directory", "mentoringOutlining", "replies"]);
 dayjs.extend(LocalizedFormat);
+dayjs.extend(relativeTime);
 
 const form = useForm({
     start_id: props.directory.id,
@@ -256,7 +258,9 @@ const formReply = useForm({
                                 >
                                     <time
                                         class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0"
-                                        >just now</time
+                                        >{{
+                                            dayjs(reply.created_at).fromNow()
+                                        }}</time
                                     >
                                     <div
                                         class="prose-xl text-sm font-normal text-gray-300"
