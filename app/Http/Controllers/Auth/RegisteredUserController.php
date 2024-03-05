@@ -34,6 +34,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'strand' => 'required|string|max:255',
+            'grade_level' => 'required|string|max:255',
             'gender' => 'required|string|max:255',
             'birthdate' => 'required',
             'school' => 'required',
@@ -45,6 +46,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'strand' => $request->strand,
+            'grade_level' => $request->grade_level,
             'gender' => $request->gender,
             'school' => $request->school,
             'birthdate' => $request->birthdate,

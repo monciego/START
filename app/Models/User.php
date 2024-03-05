@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'strand',
+        'grade_level',
         'school',
         'gender',
         'birthdate',

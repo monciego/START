@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('strand');
+            $table->string('grade_level');
             $table->string('school');
             $table->string('gender');
             $table->string('birthdate');

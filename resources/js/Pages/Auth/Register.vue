@@ -13,6 +13,7 @@ const form = useForm({
     gender: "",
     school: "",
     strand: "",
+    grade_level: "",
     birthdate: "",
     password_confirmation: "",
 });
@@ -70,6 +71,21 @@ const submit = () => {
                     v-model="form.strand"
                     required
                     autocomplete="strand"
+                />
+
+                <InputError class="mt-2" :message="form.errors.strand" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="grade_level" value="Grade Level" />
+
+                <TextInput
+                    id="grade_level"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.grade_level"
+                    required
+                    autocomplete="grade_level"
                 />
 
                 <InputError class="mt-2" :message="form.errors.strand" />

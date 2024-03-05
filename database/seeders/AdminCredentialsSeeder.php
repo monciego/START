@@ -16,6 +16,7 @@ class AdminCredentialsSeeder extends Seeder
         $administrator = \App\Models\User::factory()->create([
             "name" => "Administrator",
             "strand" => "",
+            "grade_level" => "",
             "birthdate" => "",
             "gender" => "",
             "school" => "Pangasinan State University",

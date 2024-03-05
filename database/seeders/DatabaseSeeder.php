@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             "strand" => "STEM",
             "birthdate" => "2000-01-10",
             "gender" => "Male",
+            "grade_level" => "Grade 12",
             "school" => "Pangasinan State University",
             "email" => "jerichobantiquete@gmail.com",
             "password" => Hash::make('$Password1234'),
