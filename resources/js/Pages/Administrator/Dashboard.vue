@@ -2,6 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import WelcomeBanner from "@/Components/WelcomeBanner.vue";
 import { Head } from "@inertiajs/vue3";
+import Introduction from "@/Components/Introduction.vue";
 </script>
 
 <template>
@@ -9,5 +10,6 @@ import { Head } from "@inertiajs/vue3";
 
     <AuthenticatedLayout>
         <WelcomeBanner class="mt-4" />
+        <Introduction />
     </AuthenticatedLayout>
 </template>
