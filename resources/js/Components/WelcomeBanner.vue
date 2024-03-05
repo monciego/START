@@ -100,7 +100,9 @@ const hour = today.getHours();
                 <span v-else>evening,</span>
                 {{ $page.props.auth.user.name }}
             </h1>
-            <p class="text-sm sm:text-base">See. Think. Aim. Refine. Tell.</p>
+            <p class="text-sm sm:text-base">
+                See. Think. Aim. Refine. Tell. Mentoring. Outlining
+            </p>
         </div>
     </div>
 </template>
