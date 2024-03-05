@@ -243,7 +243,7 @@ const showingNavigationDropdown = ref(false);
                     <MobileNavlink
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
-                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 dark:hover:bg-gray-800 group"
                     >
                         <svg
                             :class="
@@ -267,7 +267,7 @@ const showingNavigationDropdown = ref(false);
                     <MobileNavlink
                         :href="route('directory.index')"
                         :active="route().current('directory.*')"
-                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 dark:hover:bg-gray-800 group"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +314,7 @@ const showingNavigationDropdown = ref(false);
                     <MobileNavlink
                         :href="route('profile.edit')"
                         :active="route().current('profile.edit')"
-                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 dark:hover:bg-gray-800 group"
                     >
                         <svg
                             :class="
@@ -345,7 +345,7 @@ const showingNavigationDropdown = ref(false);
                             })
                         "
                         :active="route().current('profile.index')"
-                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group"
+                        class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-800 dark:hover:bg-gray-800 group"
                     >
                         <svg
                             :class="
