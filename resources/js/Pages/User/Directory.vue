@@ -116,7 +116,7 @@ const countNotifications = (documentId) => {
                     <p
                         class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none"
                     >
-                        START
+                        {{ document.identifier_id }}
                     </p>
                     <p
                         class="block text-sm font-medium text-gray-500 pointer-events-none"
