@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MentoringOutlining;
+use App\Models\ReplyNotification;
 use App\Models\Start;
 use App\Models\TellReply;
 use Illuminate\Http\Request;
@@ -14,8 +15,9 @@ class DirectoryController extends Controller
     public function index() {
         $userId = auth()->user()->id;
         $documents = Start::with('user')->latest()->get();
+        $userNotificationReplies = ReplyNotification::where('receiver_id', $userId)->where('user_id', 1)->get();
         $yourDocuments = Start::where('user_id', $userId )->latest()->get();
-        return Inertia::render("User/Directory", compact('documents', 'yourDocuments'));
+        return Inertia::render("User/Directory", compact('documents', 'yourDocuments', 'userNotificationReplies'));
     }
 
     public function show(Start $directory) {
@@ -28,11 +30,13 @@ class DirectoryController extends Controller
 
         $mentoringOutlining = MentoringOutlining::where('start_id', $directory->id)->first();
         $replies = TellReply::where('start_id', $directory->id)->get();
+        $userNotificationReplies = ReplyNotification::where('receiver_id', $directory->user_id)->where('user_id', 1)->get();
 
         return Inertia::render("User/Directory/Show", [
             'directory' => $directory,
             'mentoringOutlining' => $mentoringOutlining,
-            'replies' => $replies
+            'replies' => $replies,
+            'userNotificationReplies' => $userNotificationReplies
         ]);
     }
 }

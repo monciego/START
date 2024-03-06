@@ -1,13 +1,22 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head, Link } from "@inertiajs/vue3";
-
-defineProps(["documents", "yourDocuments"]);
-
 import dayjs from "dayjs";
 import LocalizedFormat from "dayjs/plugin/localizedFormat";
 
 dayjs.extend(LocalizedFormat);
+const props = defineProps([
+    "documents",
+    "yourDocuments",
+    "userNotificationReplies",
+]);
+
+// Function to count notifications for a specific document
+const countNotifications = (documentId) => {
+    return props.userNotificationReplies.filter(
+        (notification) => notification.start_id === documentId
+    ).length;
+};
 </script>
 
 <template>
@@ -78,7 +87,16 @@ dayjs.extend(LocalizedFormat);
                     class="relative"
                 >
                     <div
-                        class="group block w-full aspect-w-3 aspect-h-2 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden"
+                        v-if="
+                            $page.props.role.user &&
+                            countNotifications(document.id) > 0
+                        "
+                        class="absolute right-0 rounded-full w-8 h-8 inline-flex items-center justify-center bg-indigo-600 z-20 text-white"
+                    >
+                        {{ countNotifications(document.id) }}
+                    </div>
+                    <div
+                        class="group relative block w-full aspect-w-3 aspect-h-2 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden"
                     >
                         <img
                             src="https://static-00.iconduck.com/assets.00/folder-icon-512x410-jvths5l6.png"

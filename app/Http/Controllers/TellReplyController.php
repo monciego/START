@@ -13,15 +13,16 @@ class TellReplyController extends Controller
             'body' => 'required',
         ]);
 
-        // $request->user()->tellReplies()->create([
-        //     'body' => $request->body,
-        //     'start_id' => $request->start_id,
-        // ]);
-
         TellReply::create([
             'body' => $request->body,
             'start_id' => $request->start_id,
             'user_id' => auth()->user()->id,
+        ]);
+
+        $request->user()->replyNotifications()->create([
+            'message' => "Admin replied to your submitted start",
+            'start_id' => $request->start_id,
+            'receiver_id' => $request->my_id,
         ]);
 
         return redirect()->back()->with('success', 'Submitted Successfully!');

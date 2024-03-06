@@ -53,7 +53,12 @@ const editorConfig = {
     ],
 };
 
-const props = defineProps(["directory", "mentoringOutlining", "replies"]);
+const props = defineProps([
+    "directory",
+    "mentoringOutlining",
+    "replies",
+    "userNotificationReplies",
+]);
 dayjs.extend(LocalizedFormat);
 dayjs.extend(relativeTime);
 
@@ -69,8 +74,15 @@ const form = useForm({
 
 const formReply = useForm({
     start_id: props.directory.id,
+    my_id: props.directory.user.id,
     body: "",
 });
+
+const countNotifications = (documentId) => {
+    return props.userNotificationReplies.filter(
+        (notification) => notification.start_id === documentId
+    ).length;
+};
 </script>
 
 <template>
@@ -131,6 +143,30 @@ const formReply = useForm({
                             />
                             {{ directory.user.strand }}
                         </div>
+                    </div>
+                    <div
+                        class="mt-4"
+                        v-if="
+                            $page.props.role.user &&
+                            countNotifications(directory.id) > 0
+                        "
+                    >
+                        You have
+                        <span class="font-bold">
+                            {{ countNotifications(directory.id) }}
+                        </span>
+                        unread
+                        {{
+                            countNotifications(directory.id) === 1
+                                ? "reply"
+                                : "replies"
+                        }}
+
+                        <button
+                            class="mt-4 ms-2 bg-indigo-700 inline-block text-white p-1 px-3 hover:bg-indigo-600 ring-1 ring-white outline outline-indigo-500 rounded"
+                        >
+                            <span class="text-xs"> Mark all as read </span>
+                        </button>
                     </div>
                 </div>
                 <div class="mt-5 flex lg:ml-4 lg:mt-0">

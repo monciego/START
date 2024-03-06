@@ -57,4 +57,8 @@ class User extends Authenticatable
     public function tellReplies(): HasMany {
         return $this->hasMany(TellReply::class);
     }
+
+    public function replyNotifications(): HasMany {
+        return $this->hasMany(ReplyNotification::class);
+    }
 }
