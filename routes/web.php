@@ -31,12 +31,14 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/start', StartController::class);
     Route::resource('/directory',DirectoryController::class)->only('index', 'show');
     Route::resource('/mentoring-outlining',MentoringOutliningController::class)->only('store', 'update');
     Route::resource('/reply', TellReplyController::class)->only('store', 'update');
+    Route::resource('/reply-notification', ReplyNotificationController::class)->only('update', 'store');
 });
 
 Route::middleware('auth')->group(function () {

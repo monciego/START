@@ -78,6 +78,12 @@ const formReply = useForm({
     body: "",
 });
 
+const markReadForm = useForm({
+    userNotificationReplies: props.userNotificationReplies.filter(
+        (notification) => notification.start_id === props.directory.id
+    ),
+});
+
 const countNotifications = (documentId) => {
     return props.userNotificationReplies.filter(
         (notification) => notification.start_id === documentId
@@ -161,12 +167,20 @@ const countNotifications = (documentId) => {
                                 ? "reply"
                                 : "replies"
                         }}
-
-                        <button
-                            class="mt-4 ms-2 bg-indigo-700 inline-block text-white p-1 px-3 hover:bg-indigo-600 ring-1 ring-white outline outline-indigo-500 rounded"
+                        <form
+                            class="inline-block"
+                            @submit.prevent="
+                                markReadForm.post(
+                                    route('reply-notification.store')
+                                )
+                            "
                         >
-                            <span class="text-xs"> Mark all as read </span>
-                        </button>
+                            <button
+                                class="mt-4 ms-2 bg-indigo-700 inline-block text-white p-1 px-3 hover:bg-indigo-600 ring-1 ring-white outline outline-indigo-500 rounded"
+                            >
+                                <span class="text-xs"> Mark all as read </span>
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <div class="mt-5 flex lg:ml-4 lg:mt-0">
