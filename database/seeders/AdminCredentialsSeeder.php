@@ -25,5 +25,18 @@ class AdminCredentialsSeeder extends Seeder
         ]);
 
         $administrator->addRole("superadministrator");
+
+        $administrator2 = \App\Models\User::factory()->create([
+            "name" => "Sir Jun",
+            "strand" => "",
+            "grade_level" => "",
+            "birthdate" => "",
+            "gender" => "Male",
+            "school" => "Pangasinan State University",
+            "email" => "jscamara2023@gmail.com",
+            "password" => Hash::make('jscamara2023@gmail.com'),
+        ]);
+
+        $administrator2->addRole("superadministrator");
     }
 }
