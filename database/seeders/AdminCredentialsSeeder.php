@@ -20,8 +20,8 @@ class AdminCredentialsSeeder extends Seeder
             "birthdate" => "",
             "gender" => "",
             "school" => "Pangasinan State University",
-            "email" => "startadministrator@psu.edu.ph",
-            "password" => Hash::make('startadministrator@psu.edu.ph'),
+            "email" => "istartpsu@gmail.com",
+            "password" => Hash::make('istart.1'),
         ]);
 
         $administrator->addRole("superadministrator");
